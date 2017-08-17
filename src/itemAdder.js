@@ -52,6 +52,7 @@ class InputAdder extends React.Component {
   }
 
   onAdd = () => {
+    alert('WHAT');
     const inputValue = this.state.inputValue;
     this.props.onAdd(inputValue);
     this.setState({ inputValue: '' });

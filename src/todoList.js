@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
-import Item from './item';
+import ClickableItem from './clickableItem';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,10 +8,20 @@ const styles = StyleSheet.create({
   },
 });
 
-class List extends React.Component {
+class TodoList extends React.Component {
+  handleSelectItem = (item) => {
+    this.props.onSelectTodo(item);
+  }
 
   renderItem = ({ item, index }) => {
-    return <Item value={item} testID={`todo-${index}`} />;
+    return (
+      <ClickableItem
+        model={item}
+        position={index}
+        testID={`todo-${index}`}
+        onSelect={this.handleSelectItem}
+      />
+    );
   }
 
   keyExtractor = (item, index) => {
@@ -19,7 +29,7 @@ class List extends React.Component {
   }
 
   render() {
-    const { items } = this.props;
+    const items = this.props.items;
     return (
       <View style={styles.container}>
         <FlatList
@@ -33,4 +43,4 @@ class List extends React.Component {
   }
 }
 
-export default List;
+export default TodoList;

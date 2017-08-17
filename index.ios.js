@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, AppRegistry } from 'react-native';
 import InputAdder from './src/itemAdder';
 import TextedSwitch from './src/textedSwitch';
-import List from './src/list';
+import TodoList from './src/todoList';
 import data from './src/data';
 
 const styles = StyleSheet.create({
@@ -15,25 +15,50 @@ const styles = StyleSheet.create({
 export default class DetoxExample extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { dataSet: data };
+    this.state = { fullList: data, displayedList: data };
   }
 
-  onAdd = (newItem) => {
-    const dataSet = [...this.state.dataSet, newItem];
-    this.setState({ dataSet });
+  handleSelectTodo = (item) => {
+    const items = this.state.fullList;
+    const newItems = items.map((currentItem) => {
+      if (currentItem === item) {
+        return { ...item, isChecked: !item.isChecked };
+      }
+      return currentItem;
+    });
+
+    this.setState({ fullList: newItems, displayedList: newItems });
   }
 
-  /**
-   * @todo missing a switch to display crossed item or not
-   * @return {[type]} [description]
-   */
+  handleAddTodo = (content) => {
+    const item = { content, isChecked: false };
+    const fullList = [...this.state.dataSet, item];
+    this.setState({ fullList, displayedList: fullList });
+  }
+
+  handleHideChecked = (isHiding) => {
+    const items = this.state.fullList;
+    if (isHiding) {
+      const displayedList = items.filter((item) => !item.isChecked);
+      return this.setState({ displayedList });
+    }
+    return this.setState({ displayedList: items });
+  }
+
   render() {
-    const dataSet = this.state.dataSet;
+    const items = this.state.displayedList;
     return (
       <View style={styles.container}>
-        <InputAdder onAdd={this.onAdd}/>
-        <TextedSwitch content="Hide the checked" testID="switchHideChecked" />
-        <List items={dataSet} />
+        <InputAdder onAdd={this.handleAddTodo}/>
+        <TextedSwitch
+          onSwitch={this.handleHideChecked}
+          content="Hide the checked"
+          testID="switchHideChecked"
+        />
+        <TodoList
+          items={items}
+          onSelectTodo={this.handleSelectTodo}
+        />
       </View>
     );
   }

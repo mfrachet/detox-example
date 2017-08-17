@@ -1,29 +1,78 @@
-const dataSet = [
-  'See : Northern Lights (Aurora Borealis) See : Northern Lights (Aurora Borealis)',
-  'Ride : in a hot air balloon Ride : in a hot air balloon',
-  'See : Grand Canyon, Arizona See : Grand Canyon, Arizona',
-  'Swim: with dolphins swim: with dolphins',
-  'go: on safari go: on safari',
-  'Do : Sleep under the stars',
-  'Ride : in a helicopter Ride : in a helicopter',
-  'go: on a road trip.',
-  'Travel: Italy Travel: Italy',
-  'Do : Make a difference in someone\'s life',
-  'Travel: to the seven continents Travel: to the seven continents',
-  'See : Great Barrier Reef See : Great Barrier Reef',
-  'Do : scuba diving Do : scuba diving',
-  'Do : Shower in a waterfall.',
-  'Do : sky diving Do : sky diving',
-  'Do : Get married',
-  'See : Great Wall of China See : Great Wall of China',
-  'Travel: Australia Travel: Australia',
-  'Ride : an elephant Ride : an elephant',
-  'learn: a foreign language (or 2 or more!)',
-  'go: whale-watching go: whale-watching',
-  'See : 7 New Wonders of the World See : 7 New Wonders of the World',
-  'Travel: France Travel: France',
-  'See : New Years Eve at Times Square (New York)',
-  'Do : Raise a happy and healthy child',
-];
+const dataSet = [{
+  content: 'See Northern Lights (Aurora Borealis)',
+  isChecked: false,
+}, {
+  content: 'Ride in a hot air balloon',
+  isChecked: false,
+}, {
+  content: 'See Grand Canyon, Arizona',
+  isChecked: false,
+}, {
+  content: 'Swim with dolphins',
+  isChecked: false,
+}, {
+  content: 'Go on safari',
+  isChecked: false,
+}, {
+  content: 'Do Sleep under the stars',
+  isChecked: false,
+}, {
+  content: 'Ride in a helicopter',
+  isChecked: false,
+}, {
+  content: 'Go on a road trip.',
+  isChecked: false,
+}, {
+  content: 'Travel Italy',
+  isChecked: false,
+}, {
+  content: 'Do Make a difference in someone\'s life',
+  isChecked: false,
+}, {
+  content: 'Travel to the seven continents',
+  isChecked: false,
+}, {
+  content: 'See Great Barrier Reef',
+  isChecked: false,
+}, {
+  content: 'Do scuba diving',
+  isChecked: false,
+}, {
+  content: 'Do Shower in a waterfall.',
+  isChecked: false,
+}, {
+  content: 'Do sky diving',
+  isChecked: false,
+}, {
+  content: 'Do Get married',
+  isChecked: false,
+}, {
+  content: 'See Great Wall of China',
+  isChecked: false,
+}, {
+  content: 'Travel Australia',
+  isChecked: false,
+}, {
+  content: 'Ride an elephant',
+  isChecked: false,
+}, {
+  content: 'Learn a foreign language (or 2 or more!)',
+  isChecked: false,
+}, {
+  content: 'Go whale-watching',
+  isChecked: false,
+}, {
+  content: 'See 7 New Wonders of the World',
+  isChecked: false,
+}, {
+  content: 'Travel France',
+  isChecked: false,
+}, {
+  content: 'See New Years Eve at Times Square (New York)',
+  isChecked: false,
+}, {
+  content: 'Do Raise a happy and healthy child',
+  isChecked: false,
+}];
 
 export default dataSet;

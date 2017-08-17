@@ -23,7 +23,9 @@ class TextedSwitch extends React.Component {
   }
 
   onValueChange = () => {
-    this.setState({ isChecked: !this.state.isChecked });
+    const isChecked = !this.state.isChecked;
+    this.setState({ isChecked });
+    this.props.onSwitch(isChecked);
   }
 
   render() {
