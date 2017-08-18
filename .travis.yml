@@ -19,4 +19,5 @@ install:
 - npm install -g detox-cli
 
 script:
-- npm run e2e:ci
+- detox build --configuration ios.sim.release
+- detox test --configuration ios.sim.release --cleanup
