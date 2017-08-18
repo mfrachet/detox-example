@@ -1,4 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Travis](https://travis-ci.org/mfrachet/detox-example.svg?branch=master)
 
 ![Detox tests](https://img4.hostingpics.net/pics/420897detox.gif)
 
