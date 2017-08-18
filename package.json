@@ -5,8 +5,9 @@
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"lint": "eslint ./",
-		"test": "detox test",
-		"e2e": "detox build && detox test"
+		"test": "detox test --configuration ios.sim.debug",
+		"e2e": "detox build --configuration ios.sim.debug && npm test",
+		"e2e:ci": "detox build --configuration ios.sim.release && detox test --configuration ios.sim.release --cleanup"
 	},
 	"dependencies": {
 		"prop-types": "^15.5.10",
@@ -37,7 +38,13 @@
 				"build": "xcodebuild -project ios/detoxExample.xcodeproj -scheme detoxExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
 				"type": "ios.simulator",
 				"name": "iPhone 7"
-			}
+			},
+			"ios.sim.release": {
+	      "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/detoxExample.app",
+	      "build": "xcodebuild -project ios/detoxExample.xcodeproj -scheme detoxExample -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+	      "type": "ios.simulator",
+	      "name": "iPhone 7"
+	    }
 		}
 	}
 }
