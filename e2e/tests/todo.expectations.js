@@ -34,16 +34,6 @@ describe('Expectations', () => {
     it('should have a visible "Add" button when a text is filled in the input field', async () => {
       await inputAdder.tap();
       await inputAdder.typeText('Item');
-
-      /**
-       * Necessary trick, check notes here https://github.com/wix/detox/blob/master/docs/APIRef.waitFor.md#methods
-       * withTimeout is another trick that waits the layout animation to "finish" before expecting the result
-       * to be displayed
-       */
-      await waitFor(touchableAdder)
-        .toBeVisible()
-        .withTimeout(1000);
-
       await expect(touchableAdder).toBeVisible();
     });
   });
@@ -70,16 +60,6 @@ describe('Expectations', () => {
     it('should have the textAdd with a text equals to "Add"', async () => {
       await inputAdder.tap();
       await inputAdder.typeText('Item');
-
-      /**
-       * Necessary trick, check notes here https://github.com/wix/detox/blob/master/docs/APIRef.waitFor.md#methods
-       * withTimeout is another trick that waits the layout animation to "finish" before expecting the result
-       * to be displayed
-       */
-      await waitFor(textAdd)
-        .toBeVisible()
-        .withTimeout(1000);
-
       await expect(textAdd).toHaveText('Add');
     });
   });

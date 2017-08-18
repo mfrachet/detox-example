@@ -63,7 +63,6 @@ class InputAdder extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput
-          testID="inputAdder"
           placeholderTextColor="#dddddd"
           style={[styles.main, styles.textColor]}
           placeholder="Add a new todo item"

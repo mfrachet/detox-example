@@ -33,7 +33,7 @@ class TodoList extends React.Component {
     return (
       <View style={styles.container}>
         <FlatList
-          testID="list"
+          testID="todoList"
           data={items}
           renderItem={this.renderItem}
           keyExtractor={this.keyExtractor}

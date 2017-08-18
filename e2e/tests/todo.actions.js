@@ -92,4 +92,66 @@ describe('Actions', () => {
       await expect(newTodoItem).toBeVisible();
     });
   });
+
+  describe('.typeText()', () => {
+    it('should have displayed the touchableAdder when typing a text inside of the input adder', async () => {
+      /**
+       * It seems to be necessary to use .tap() before makings action on element
+       * instead, test are failing like this issue :
+       * https://github.com/wix/detox/issues/239
+       */
+      await inputAdder.tap();
+      await inputAdder.typeText('Stuff');
+      await expect(touchableAdder).toBeVisible();
+    });
+  });
+
+  describe('.replaceText()', () => {
+    it('it should have undisplayed the touchableAdder when replacing the text with an empty one', async () => {
+      /**
+       * It seems to be necessary to use .tap() before makings action on element
+       * instead, test are failing like this issue :
+       * https://github.com/wix/detox/issues/239
+       */
+      await inputAdder.tap();
+      await inputAdder.typeText('Stuff');
+      /**
+       * Replace text doesn't seem to work by really typing inside of the input
+       * It may act at a lower level
+       * This way, we're forced to .tap() on the input to make the state change
+       */
+      await inputAdder.replaceText('');
+      await inputAdder.tap();
+
+      await expect(touchableAdder).toBeNotVisible();
+    });
+  });
+
+  describe('.clearText()', () => {
+    it('it should have undisplayed the touchableAdder when clearing the text', async () => {
+      /**
+       * It seems to be necessary to use .tap() before makings action on element
+       * instead, test are failing like this issue :
+       * https://github.com/wix/detox/issues/239
+       */
+      await inputAdder.tap();
+      await inputAdder.typeText('Stuff');
+      await inputAdder.clearText();
+      await expect(touchableAdder).toBeNotVisible();
+    });
+  });
+
+  describe('.scroll()', () => {
+    it('should have a "get married" item', async () => {
+      await list.scroll(500, 'down');
+      await expect(getMarriedTodo).toBeVisible();
+    });
+  });
+
+  describe('.scrollTo()', () => {
+    it('should have a "get married" item', async () => {
+      await list.scrollTo('bottom');
+      await expect(getMarriedTodo).toBeVisible();
+    });
+  });
 });
