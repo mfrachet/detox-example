@@ -31,17 +31,8 @@ describe('Expectations', () => {
   });
 
   describe('.toBeVisible()', () => {
-    beforeEach(async () => {
-      /**
-       * When a TextInput has been filled in a previous test using `typeText`,
-       * it doesn't seem possible to type in it again. The keyboard doesn't show
-       * and the test fails.
-       * Restarting the app seems to fix it
-       */
-      await device.launchApp({ newInstance: true });
-    });
-
     it('should have a visible "Add" button when a text is filled in the input field', async () => {
+      await inputAdder.tap();
       await inputAdder.typeText('Item');
 
       /**
@@ -76,17 +67,8 @@ describe('Expectations', () => {
   });
 
   describe('.toHaveText()', () => {
-    beforeEach(async () => {
-      /**
-       * When a TextInput has been filled in a previous test using `typeText`,
-       * it doesn't seem possible to type in it again. The keyboard doesn't show
-       * and the test fails.
-       * Restarting the app seems to fix it
-       */
-      await device.launchApp({ newInstance: true });
-    });
-
     it('should have the textAdd with a text equals to "Add"', async () => {
+      await inputAdder.tap();
       await inputAdder.typeText('Item');
 
       /**

@@ -72,29 +72,24 @@ describe('Actions', () => {
   });
 
   describe('.tapAtPoint()', () => {
-    // beforeEach(async () => {
-    //   /**
-    //    * When a TextInput has been filled in a previous test using `typeText`,
-    //    * it doesn't seem possible to type in it again. The keyboard doesn't show
-    //    * and the test fails.
-    //    * Restarting the app seems to fix it
-    //    */
-    //   await device.launchApp({ newInstance: true });
-    // });
-    //
-    // it('should have added a new todo item to the list', async () => {
-    //   await inputAdder.typeText('Stuff');
-    //   /**
-    //    * Necessary trick, check notes here https://github.com/wix/detox/blob/master/docs/APIRef.waitFor.md#methods
-    //    * withTimeout is a trick that waits the layout animation to "finish" before expecting the result
-    //    * to be displayed
-    //    */
-    //   await waitFor(touchableAdder)
-    //     .toBeVisible()
-    //     .withTimeout(1000);
-    //
-    //   await touchableAdder.tap();
-    //   await expect(touchableAdder).toBeVisible();
-    // });
+    it('should have added a new todo item to the list', async () => {
+      /**
+       * It seems to be necessary to use .tap() before makings action on element
+       * instead, test are failing like this issue :
+       * https://github.com/wix/detox/issues/239
+       */
+      await inputAdder.tap();
+      await inputAdder.typeText('Stuff');
+      await touchableAdder.tap();
+      /**
+       * It seems to be necessary to use .tap() before makings action on element
+       * instead, test are failing like this issue :
+       * https://github.com/wix/detox/issues/239
+       */
+      await list.tapAtPoint({ x: 12, y: 25 });
+      await list.scrollTo('bottom');
+
+      await expect(newTodoItem).toBeVisible();
+    });
   });
 });

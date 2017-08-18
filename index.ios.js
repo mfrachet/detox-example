@@ -32,7 +32,7 @@ export default class DetoxExample extends React.Component {
 
   handleAddTodo = (content) => {
     const item = { content, isChecked: false };
-    const fullList = [...this.state.dataSet, item];
+    const fullList = [...this.state.fullList, item];
     this.setState({ fullList, displayedList: fullList });
   }
 
