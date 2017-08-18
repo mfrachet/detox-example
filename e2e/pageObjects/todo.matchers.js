@@ -25,7 +25,7 @@ const PageObjectModel = (element) => {
     getMarriedTodo,
     newTodoItem,
     inputAdder,
-    switchHideChecked
+    switchHideChecked,
   };
 };
 

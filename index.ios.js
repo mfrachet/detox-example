@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, StyleSheet, AppRegistry } from 'react-native';
 import InputAdder from './src/itemAdder';
 import TextedSwitch from './src/textedSwitch';
@@ -39,7 +39,7 @@ export default class DetoxExample extends React.Component {
   handleHideChecked = (isHiding) => {
     const items = this.state.fullList;
     if (isHiding) {
-      const displayedList = items.filter((item) => !item.isChecked);
+      const displayedList = items.filter(item => !item.isChecked);
       return this.setState({ displayedList });
     }
     return this.setState({ displayedList: items });
@@ -49,7 +49,7 @@ export default class DetoxExample extends React.Component {
     const items = this.state.displayedList;
     return (
       <View style={styles.container}>
-        <InputAdder onAdd={this.handleAddTodo}/>
+        <InputAdder onAdd={this.handleAddTodo} />
         <TextedSwitch
           onSwitch={this.handleHideChecked}
           content="Hide the checked"

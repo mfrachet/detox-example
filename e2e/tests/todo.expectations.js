@@ -1,4 +1,4 @@
-const PageObjectModel  = require('./../pageObjects/todo.matchers');
+const PageObjectModel = require('./../pageObjects/todo.matchers');
 
 /**
  * This suit of tests aims to provide some example of the APIs concerning
@@ -27,7 +27,7 @@ describe('Expectations', () => {
     unknownComponent = po.unknownComponent;
     getMarriedTodo = po.getMarriedTodo;
     switchHideChecked = po.switchHideChecked;
-    textAdd = po.textAdd
+    textAdd = po.textAdd;
   });
 
   describe('.toBeVisible()', () => {

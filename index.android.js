@@ -1,53 +1,66 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React from 'react';
+import { View, StyleSheet, AppRegistry } from 'react-native';
+import InputAdder from './src/itemAdder';
+import TextedSwitch from './src/textedSwitch';
+import TodoList from './src/todoList';
+import data from './src/data';
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 30,
+  },
+});
 
-export default class detoxExample extends Component {
+export default class DetoxExample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { fullList: data, displayedList: data };
+  }
+
+  handleSelectTodo = (item) => {
+    const items = this.state.fullList;
+    const newItems = items.map((currentItem) => {
+      if (currentItem === item) {
+        return { ...item, isChecked: !item.isChecked };
+      }
+      return currentItem;
+    });
+
+    this.setState({ fullList: newItems, displayedList: newItems });
+  }
+
+  handleAddTodo = (content) => {
+    const item = { content, isChecked: false };
+    const fullList = [...this.state.fullList, item];
+    this.setState({ fullList, displayedList: fullList });
+  }
+
+  handleHideChecked = (isHiding) => {
+    const items = this.state.fullList;
+    if (isHiding) {
+      const displayedList = items.filter(item => !item.isChecked);
+      return this.setState({ displayedList });
+    }
+    return this.setState({ displayedList: items });
+  }
+
   render() {
+    const items = this.state.displayedList;
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <InputAdder onAdd={this.handleAddTodo} />
+        <TextedSwitch
+          onSwitch={this.handleHideChecked}
+          content="Hide the checked"
+        />
+        <TodoList
+          items={items}
+          onSelectTodo={this.handleSelectTodo}
+        />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('detoxExample', () => detoxExample);
+AppRegistry.registerComponent('detoxExample', () => DetoxExample);

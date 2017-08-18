@@ -6,8 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   UIManager,
-  LayoutAnimation
+  LayoutAnimation,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 if (UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   },
   placeholderColor: {
     color: '#dddddd',
-  }
+  },
 });
 
 class InputAdder extends React.Component {
@@ -44,17 +45,17 @@ class InputAdder extends React.Component {
     this.state = { inputValue: '' };
   }
 
+  onAdd = () => {
+    const inputValue = this.state.inputValue;
+    this.props.onAdd(inputValue);
+    this.setState({ inputValue: '' });
+  }
+
   handleInputChanges = (text) => {
     if (!this.state.inputValue || !text) {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
     }
     this.setState({ inputValue: text });
-  }
-
-  onAdd = () => {
-    const inputValue = this.state.inputValue;
-    this.props.onAdd(inputValue);
-    this.setState({ inputValue: '' });
   }
 
   render() {
@@ -80,8 +81,12 @@ class InputAdder extends React.Component {
           </TouchableOpacity>
         }
       </View>
-    )
+    );
   }
 }
+
+InputAdder.propTypes = {
+  onAdd: PropTypes.func.isRequired,
+};
 
 export default InputAdder;

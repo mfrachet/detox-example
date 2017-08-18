@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Switch, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,12 +8,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 50,
     paddingLeft: 10,
-    backgroundColor: '#f4f4f4'
+    backgroundColor: '#f4f4f4',
   },
   main: {
     flex: 1,
     fontSize: 16,
-    paddingLeft: 10
+    paddingLeft: 10,
   },
 });
 
@@ -32,7 +33,7 @@ class TextedSwitch extends React.Component {
     const content = this.props.content;
     const isChecked = this.state.isChecked;
 
-    return(
+    return (
       <View style={styles.container}>
         <Switch
           onValueChange={this.onValueChange}
@@ -43,5 +44,10 @@ class TextedSwitch extends React.Component {
     );
   }
 }
+
+TextedSwitch.propTypes = {
+  content: PropTypes.string.isRequired,
+  onSwitch: PropTypes.func.isRequired,
+};
 
 export default TextedSwitch;

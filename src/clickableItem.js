@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,6 @@ const styles = StyleSheet.create({
 });
 
 class ClickableItem extends React.Component {
-
   handleSelect = () => {
     const { model, onSelect } = this.props;
     onSelect(model);
@@ -38,5 +38,14 @@ class ClickableItem extends React.Component {
     );
   }
 }
+
+ClickableItem.propTypes = {
+  model: PropTypes.shape({
+    isChecked: PropTypes.bool.isRequired,
+    content: PropTypes.string.isRequired,
+  }).isRequired,
+  testID: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
+};
 
 export default ClickableItem;

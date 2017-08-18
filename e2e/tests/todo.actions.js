@@ -1,4 +1,4 @@
-const PageObjectModel  = require('./../pageObjects/todo.matchers');
+const PageObjectModel = require('./../pageObjects/todo.matchers');
 
 /**
  * This suit of tests aims to provide some example of the APIs concerning
@@ -10,10 +10,8 @@ describe('Actions', () => {
 
   let inputAdder;
   let touchableAdder;
-  let unknownComponent;
   let getMarriedTodo;
   let switchHideChecked;
-  let textAdd;
   let touchableFifteenth;
   let list;
   let newTodoItem;
@@ -27,10 +25,8 @@ describe('Actions', () => {
 
     inputAdder = po.inputAdder;
     touchableAdder = po.touchableAdder;
-    unknownComponent = po.unknownComponent;
     getMarriedTodo = po.getMarriedTodo;
     switchHideChecked = po.switchHideChecked;
-    textAdd = po.textAdd
     getMarriedTodo = po.getMarriedTodo;
     touchableFifteenth = po.touchableFifteenth;
     list = po.list;
