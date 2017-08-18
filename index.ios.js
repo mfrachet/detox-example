@@ -53,7 +53,6 @@ export default class DetoxExample extends React.Component {
         <TextedSwitch
           onSwitch={this.handleHideChecked}
           content="Hide the checked"
-          testID="switchHideChecked"
         />
         <TodoList
           items={items}

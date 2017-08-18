@@ -29,7 +29,7 @@ class TextedSwitch extends React.Component {
   }
 
   render() {
-    const { content, testID } = this.props;
+    const content = this.props.content;
     const isChecked = this.state.isChecked;
 
     return(
@@ -37,7 +37,6 @@ class TextedSwitch extends React.Component {
         <Switch
           onValueChange={this.onValueChange}
           value={isChecked}
-          testID={testID}
         />
         <Text style={styles.main}>{content}</Text>
       </View>
