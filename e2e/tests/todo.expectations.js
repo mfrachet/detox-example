@@ -31,16 +31,6 @@ describe('Expectations', () => {
   });
 
   describe('.toBeVisible()', () => {
-    beforeEach(async () => {
-      /**
-       * When a TextInput has been filled in a previous test using `typeText`,
-       * it doesn't seem possible to type in it again. The keyboard doesn't show
-       * and the test fails.
-       * Restarting the app seems to fix it
-       */
-      await device.launchApp({ newInstance: true });
-    });
-
     it('should have a visible "Add" button when a text is filled in the input field', async () => {
       await inputAdder.typeText('Item');
 
@@ -49,6 +39,16 @@ describe('Expectations', () => {
        * withTimeout is another trick that waits the layout animation to "finish" before expecting the result
        * to be displayed
        */
+      await waitFor(touchableAdder)
+        .toBeVisible()
+        .withTimeout(1000);
+
+      await expect(touchableAdder).toBeVisible();
+    });
+
+    it('should have a visible "Add" button when a text is filled in the input field', async () => {
+      await inputAdder.typeText('Item');
+
       await waitFor(touchableAdder)
         .toBeVisible()
         .withTimeout(1000);
